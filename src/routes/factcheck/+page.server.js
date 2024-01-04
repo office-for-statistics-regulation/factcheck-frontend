@@ -1,9 +1,6 @@
 let currentDate = new Date();
 let formattedDate = currentDate.toDateString().slice(4);
 
-import { VITE_OPENAI_API } from '$env/static/public'
-console.log("VITE_OPENAI_API", VITE_OPENAI_API)
-
 const secretKey = import.meta.env.VITE_OPENAI_API;
 console.log("secretKey", secretKey)
 

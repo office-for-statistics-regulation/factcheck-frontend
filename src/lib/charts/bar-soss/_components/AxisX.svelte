@@ -54,7 +54,7 @@
 
 <g class="axis x-axis" class:snapTicks>
   {#each tickVals as tick, i (tick)}
-    <g class="tick tick-{i}" transform="translate({$xScale(tick)},{Math.max(...$yRange)}), rotate(-25)">
+    <g class="tick tick-{i}" transform="translate({$xScale(tick)+35},{Math.max(...$yRange)})" >
       {#if gridlines !== false}
         <line class="gridline" y1={$height * -1} y2="0" x1="0" x2="0" />
       {/if}
@@ -68,11 +68,13 @@
         />
       {/if}
       <text
-        x={isBandwidth ? ($xScale.bandwidth() / 2 + xTick) : xTick}
+        x={xTick}
         y={yTick}
         dx=""
         dy=""
-        text-anchor="end">{formatTick(tick)}</text
+        text-anchor="end"
+        transform={`rotate(-45, ${xTick}, ${yTick})`}
+      >{formatTick(tick)}</text
       >
     </g>
   {/each}

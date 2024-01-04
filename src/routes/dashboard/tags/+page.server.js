@@ -3,19 +3,24 @@ export const prerender = false;
 
 import { BigQuery } from "@google-cloud/bigquery";
 
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import path, { dirname } from 'path'; // Importing the path module
+var credentials = {
+    "type": "service_account",
+    "project_id": "osr-dashboard",
+    "client_id": "117093491286790458609",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/new-svelte%40osr-dashboard.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}
 
-// Get the directory of the current file
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const private_key_id = import.meta.env.VITE_GCP_PRIVATEID;
+const private_key = import.meta.env.VITE_GCP_PRIVATE;
+const client_email = import.meta.env.VITE_GCP_CLIENTEMAIL;
 
-// Construct the absolute path to the credentials file
-const credentialsPath = path.join(__dirname, '..', 'credentials.json');
-// Synchronously read the credentials file
-const credentialsJson = fs.readFileSync(credentialsPath, 'utf8');
-
-const credentials = JSON.parse(credentialsJson);
+credentials['private_key_id'] = private_key_id
+credentials['private_key'] = private_key
+credentials['client_email'] = client_email
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch }) {

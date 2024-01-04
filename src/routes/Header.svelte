@@ -28,6 +28,9 @@
 			<li aria-current={$page.url.pathname.startsWith('/PRC') ? 'page' : undefined}>
 				<a href="/PRC">PRC</a>
 			</li>
+			<li aria-current={$page.url.pathname.startsWith('/SoSS') ? 'page' : undefined}>
+				<a href="/SoSS">SoSS</a>
+			</li>
 			<!-- <li aria-current={$page.url.pathname.startsWith('/RAAC') ? 'page' : undefined}>
 				<a href="/RAAC">RAAC</a>
 			</li> -->

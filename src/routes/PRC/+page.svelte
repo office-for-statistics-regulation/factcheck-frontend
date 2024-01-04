@@ -55,6 +55,7 @@
 
         arr.forEach(e => {
         e['date'] = transformDateFormat(e['date'])
+        console.log("e['date']", e['date'])
         let e_keys = Object.keys(e);
         uniques.forEach(u => {
             if (!e_keys.includes(u)) {
@@ -96,6 +97,7 @@
 
         console.log("data_line", data_line)
     })
+    console.log("data_line", data_line)
 
     var selected = "All";
     function clicked(type) {
@@ -237,6 +239,8 @@
     }
 
     var dispAll = false;
+
+    $: console.log("types_bar_data", types_bar_data)
 
 
 </script>
